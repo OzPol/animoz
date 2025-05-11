@@ -1,0 +1,5 @@
+[project]
+name = "animoz"
+version = "0.1.0"
+description = "A personal collection of mathematical, graphical, and experimental animations."
+requires-python = ">=3.11"
