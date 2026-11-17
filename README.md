@@ -54,8 +54,9 @@ activate the installed environment or prefix them with `uv run --locked --extra 
 | `media/` | Separate, automatically named working renders |
 | `notebooks/` | Existing notebook experiments and saved GIFs |
 
-The first PR introduces this foundation and the intro examples. Puerta Court and
-the systolic-array project follow in separate branches and PRs.
+The [Puerta Court project](docs/puerta-court.md) adds the measured corner,
+explained motion physics, selectable replay cameras, and an offline time/camera
+viewer. Systolic-array development follows on a branch containing those changes.
 
 ## Notebook requirements
 - Python 3.11.5+

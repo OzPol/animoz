@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:09,433
+Begin with the corner itself. A and B are the ends of the sampled bend. O is the intersection of the projected straight wall lines.
+
+2
+00:00:09,433 --> 00:00:18,300
+The corner spans 94 inches east to west and 60 inches north to south. Those are perpendicular projections, not lengths along the bend.
+
+3
+00:00:18,300 --> 00:00:27,900
+Q1 is 39 inches east of the post reference and 21 inches south of A's level. The pair locates one sample, not a circular radius.
+
+4
+00:00:28,167 --> 00:00:37,767
+Q2 is 42 inches east of the post reference and 38 inches south of A's level. The pair locates one sample, not a circular radius.
+
+5
+00:00:38,033 --> 00:00:47,633
+Q3 is 52 inches east of the post reference and 59 inches south of A's level. The pair locates one sample, not a circular radius.
+
+6
+00:00:47,900 --> 00:00:57,500
+The dotted connections only show the sample order. The exact curve, wall thickness, and wall returns remain unregistered. A smooth wall here would invent geometry.
+
+7
+00:00:57,500 --> 00:01:04,500
+Now widen the view to the straight wall and sidewalk. The marked slab lengths retain their measured proportions.
+
+8
+00:01:04,500 --> 00:01:10,767
+The 59-inch sidewalk width is measured. Its east-west placement here uses the documented 31-inch wall-face interpretation.
+
+9
+00:01:10,767 --> 00:01:21,133
+The wall and slab chain disagrees with the separate 12-inch post reference by 1.5 inches. We preserve that residual rather than shifting the drawing to hide it.
+
+10
+00:01:21,433 --> 00:01:31,033
+For scale, this car envelope uses the Toyota dimensions at the same inch scale. It is a size comparison inset, not a registered accident position.
+
+11
+00:01:31,033 --> 00:01:41,000
+The driver is on the south side of a westbound car. The reported contact is on the front bumper near the passenger side of its centerline.
+
+12
+00:01:41,000 --> 00:01:50,233
+Driver-eye position, lane position, and the complete wall surface are still needed for a credible first-visibility calculation. Changing a camera cannot supply those measurements.
