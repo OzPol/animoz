@@ -22,12 +22,13 @@ view. Configuration loading does not evaluate Python expressions.
 The development image builds native prerequisites as root and runs rendering
 as its unprivileged `vscode` user. Native package names are validated before
 installation. CI uses read-only repository permissions, commit-pinned actions,
-and checkout without persisted credentials. Weekly Dependabot PRs propose
-updates without automatic merging. Keep sensitive files and host credentials
+and checkout without persisted credentials. Dependency and container updates
+are made manually and tested. Keep sensitive files and host credentials
 out of the container's mounted workspace when executing third-party scenes.
 
 The Python audit checks known published advisories; it does not prove the
 absence of vulnerabilities or scan FFmpeg, Cairo, Pango, the operating system,
-or the Docker daemon. Rebuild the base image and native packages regularly.
+or the Docker daemon. The base image uses a version tag and verified digest.
+Review and update that digest and rebuild native packages regularly.
 The current project has no upload service or public rendering endpoint; adding
 one would require resource limits and isolation designed for untrusted input.
