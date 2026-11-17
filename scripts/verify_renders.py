@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from animoz.registry import PROJECTS
+from animoz.rendering.theme import FONT
 
 
 def verify(root: Path, save_to: Path | None = None) -> None:
@@ -28,6 +29,8 @@ def verify(root: Path, save_to: Path | None = None) -> None:
         path, record = latest[alias]
         if record["status"] != "completed" or record["exit_code"] != 0:
             raise RuntimeError(f"Render failed: {path}")
+        if record.get("font") != FONT:
+            raise RuntimeError(f"Render {alias} again using the current font ({FONT}).")
         if len(record["artifacts"]) != 1:
             raise RuntimeError(f"Expected one final MP4: {path}")
         video = path.parent / record["artifacts"][0]
@@ -83,6 +86,7 @@ def verify(root: Path, save_to: Path | None = None) -> None:
                     "python": record["python"],
                     "manim": record["manim"],
                     "renderer": record["renderer"],
+                    "font": record["font"],
                     "quality": record["quality"],
                     "settings": record["settings"],
                     "width": stream["width"],

@@ -6,7 +6,7 @@ RUN rm -f /etc/apt/sources.list.d/yarn.list /etc/apt/sources.list.d/yarn.sources
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        build-essential pkg-config libcairo2-dev libpango1.0-dev \
-       ffmpeg fonts-dejavu-core \
+       ffmpeg fonts-cmu \
     && rm -rf /var/lib/apt/lists/*
 RUN python -m pip install --no-cache-dir uv==0.13.6
 

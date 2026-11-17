@@ -71,5 +71,15 @@ creates a new output directory automatically.
 
 The finished intro clips are committed under [videos/intro](../videos/intro/).
 Their [render record](../videos/intro/render-info.json) contains the exact
-settings, software versions, video dimensions, frame rates, and durations.
+settings, font, software versions, video dimensions, frame rates, and durations.
 To create a different quality, use `--quality low`, `medium`, or `high`.
+
+## Font sample
+
+The scenes use **CMU Serif**. Uppercase, title case, lowercase, bold, and italic
+examples appear in [the rendered font sample](images/cmu-serif.png).
+Regenerate it from the repository root:
+
+```bash
+uv run --locked --extra manim python scripts/render_font_sample.py
+```

@@ -4,7 +4,8 @@ A personal collection of mathematical, graphical, and experimental animations.
 ## Manim Community
 
 Python **3.12** is the default development environment; Python **3.11** is also
-supported and checked in CI. The Manim examples use a light canvas with dark text.
+supported and checked in CI. The Manim examples use **CMU Serif** on a light canvas
+with dark text. [See uppercase, title case, lowercase, bold, and italic samples](docs/images/cmu-serif.png).
 
 Open this branch in GitHub Codespaces, or use VS Code's **Reopen in Container**.
 Once setup finishes, render your first example:

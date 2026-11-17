@@ -1,6 +1,6 @@
 {
   "project": "intro",
-  "exported_at_utc": "2026-11-17T05:06:19.340586+00:00",
+  "exported_at_utc": "2026-11-17T05:47:33.316040+00:00",
   "videos": [
     {
       "file": "welcome.mp4",
@@ -8,6 +8,7 @@
       "python": "3.12.14",
       "manim": "0.22.1",
       "renderer": "cairo",
+      "font": "CMU Serif",
       "quality": "low",
       "settings": {
         "duration_seconds": 4.0,
@@ -19,7 +20,7 @@
       "height": 480,
       "frame_rate": "307200/20477",
       "duration_seconds": 6.66569,
-      "sha256": "59a0e2c107a75e9f65573ddd680c45ae3b31300bbdd575fd92ead7cb93cfbabf"
+      "sha256": "c1bbf88e854aaf2882a237408c61a317e3426826de6d052cafa04dff744a99ce"
     },
     {
       "file": "motion.mp4",
@@ -27,6 +28,7 @@
       "python": "3.12.14",
       "manim": "0.22.1",
       "renderer": "cairo",
+      "font": "CMU Serif",
       "quality": "low",
       "settings": {
         "duration_seconds": 4.0,
@@ -38,7 +40,7 @@
       "height": 480,
       "frame_rate": "15/1",
       "duration_seconds": 5.6,
-      "sha256": "bf600c9ce021631943dd9bcbb4cdf1a256cfda1fddda61182a292dda91923451"
+      "sha256": "4b470e21561eb879935679897584607d940bef31cf2a528ac84dd698a9deed94"
     },
     {
       "file": "cameras.mp4",
@@ -46,6 +48,7 @@
       "python": "3.12.14",
       "manim": "0.22.1",
       "renderer": "cairo",
+      "font": "CMU Serif",
       "quality": "low",
       "settings": {
         "duration_seconds": 4.0,
@@ -57,7 +60,7 @@
       "height": 480,
       "frame_rate": "15/1",
       "duration_seconds": 16.133333,
-      "sha256": "f05051bd97a8a61dbd25d10573a6263f12255097a364ec20270eeb5b80b86b06"
+      "sha256": "30d1e9474c493b29719a04089bb4501fb136daa6b1358324bdfb54bfe07777d5"
     }
   ]
 }

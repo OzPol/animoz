@@ -1,7 +1,7 @@
 # Intro videos
 
 These MP4s are stored in the repository and can be downloaded or cloned with
-the source. They use a light canvas and dark text.
+the source. They use CMU Serif on a light canvas with dark text.
 
 | Video | Content |
 | --- | --- |
@@ -10,7 +10,7 @@ the source. They use a light canvas and dark text.
 | [cameras.mp4](cameras.mp4) | Replay the same motion from three viewpoints |
 
 The [render record](render-info.json) lists each clip's settings, software
-versions, dimensions, frame rate, duration, and SHA-256 hash.
+versions, font, dimensions, frame rate, duration, and SHA-256 hash.
 
 To regenerate the working previews:
 

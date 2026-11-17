@@ -29,10 +29,18 @@ def doctor() -> int:
     print(f"Python: {sys.version.split()[0]} ({sys.executable})")
     try:
         import manim
+        import manimpango
+
+        from animoz.rendering.theme import FONT
 
         print(f"Manim Community: {manim.__version__}")
         if manim.__version__ != "0.22.1":
             print("Use the locked environment: uv sync --locked --extra manim")
+            ok = False
+        font_found = FONT in manimpango.list_fonts()
+        print(f"Font: {FONT} ({'available' if font_found else 'not installed'})")
+        if not font_found:
+            print("Install fonts-cmu or rebuild the development container.")
             ok = False
     except (ImportError, OSError) as error:
         print(f"Manim: unavailable ({error})")
@@ -63,6 +71,8 @@ def render(args: argparse.Namespace) -> int:
         print(f"Cannot render: {error}", file=sys.stderr)
         print("Run 'animoz doctor' to check the environment.", file=sys.stderr)
         return 2
+    from animoz.rendering.theme import FONT
+
     aliases = project.scenes if args.scene == "all" else [args.scene]
     for alias in aliases:
         scene_class = project.scenes[alias][0]
@@ -75,6 +85,7 @@ def render(args: argparse.Namespace) -> int:
             "python": sys.version.split()[0],
             "manim": metadata.version("manim"),
             "renderer": "cairo",
+            "font": FONT,
             "settings": settings.as_dict(),
             "started_at_utc": datetime.now(timezone.utc).isoformat(),
             "status": "running",
