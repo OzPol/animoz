@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Survey",
+    "start_seconds": 0.0
+  },
+  {
+    "title": "Physics",
+    "start_seconds": 110.23138
+  },
+  {
+    "title": "Replay / north-up",
+    "start_seconds": 176.364062
+  },
+  {
+    "title": "Replay / beneva",
+    "start_seconds": 184.864062
+  },
+  {
+    "title": "Replay / access-road",
+    "start_seconds": 193.364062
+  },
+  {
+    "title": "Replay / south",
+    "start_seconds": 201.864062
+  }
+]

@@ -1,5 +1,9 @@
 # Puerta Court videos
 
+[Watch the complete film](presentation.mp4), or inspect the individual chapters
+and camera exports. The complete film has captions, chapter markers, and a
+transcript. Rebuild it after saving fresh chapters with `animoz assemble puerta-court`.
+
 The survey and physics videos explain the geometry and motion model. Separate
 `replay-<view>.mp4` and `survey-view-<view>.mp4` clips share identical physical
 coordinates. `viewer.html` provides offline camera controls and time scrubbing.

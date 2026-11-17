@@ -26,7 +26,7 @@ class ExplainedScene(Scene):
         lines = textwrap.fill(text, width=94)
         self.caption = VGroup(
             label(lines, 21, getattr(self, "caption_color", INK))
-        ).to_edge(DOWN, buff=0.28)
+        ).to_edge(DOWN, buff=getattr(self, "caption_bottom", 0.28))
         self.play(FadeIn(self.caption), run_time=0.2)
         duration = seconds if seconds is not None else max(2.5, len(text.split()) / 2.7)
         if animations:

@@ -6,7 +6,9 @@ is +y, and height is +z. Camera changes never move or rescale individual objects
 
 ## Watch and explore
 
-The [saved videos](../videos/puerta-court/) include the survey and physics
+The [complete film](../videos/puerta-court/presentation.mp4) connects the survey,
+physics, and synchronized camera replays with fades and chapter markers.
+The [individual saved videos](../videos/puerta-court/) include the survey and physics
 explainers and replays from every preset. Explanatory scenes have accompanying
 captions, chapter times, and transcripts.
 
@@ -24,7 +26,7 @@ animoz views puerta-court
 animoz render puerta-court replay --view all
 animoz render puerta-court survey-view --view beneva
 animoz render puerta-court replay --phi 45 --theta -130 --zoom 0.9
-animoz render puerta-court all --quality high
+animoz render puerta-court all --quality high --view all
 ```
 
 `--view all` saves separate timestamped runs, including their exact camera inputs.
@@ -97,6 +99,7 @@ rendering. To save updated examples after rendering all scenes:
 ```bash
 python scripts/verify_renders.py media --project puerta-court --save-to videos/puerta-court
 animoz explore puerta-court --output videos/puerta-court/viewer.html
+animoz assemble puerta-court
 ```
 
 `render-info.json` records settings, software, camera view, duration, codec

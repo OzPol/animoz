@@ -200,6 +200,11 @@ def main(argv: list[str] | None = None) -> int:
         "views", help="List a project's camera presets."
     )
     views_parser.add_argument("project", choices=PROJECTS)
+    assembly = subparsers.add_parser(
+        "assemble", help="Join saved project chapters into one captioned film."
+    )
+    assembly.add_argument("project", choices=PROJECTS)
+    assembly.add_argument("--directory", type=Path)
     explorer = subparsers.add_parser(
         "explore", help="Write an offline interactive Puerta Court viewer."
     )
@@ -237,6 +242,23 @@ def main(argv: list[str] | None = None) -> int:
             print(
                 f"{name}: phi={pose['phi']:g}, theta={pose['theta']:g}, zoom={pose['zoom']:g}"
             )
+        return 0
+    if args.command == "assemble":
+        from animoz.rendering.assemble import assemble
+
+        try:
+            video = assemble(
+                args.project, args.directory or Path("videos") / args.project
+            )
+        except (
+            OSError,
+            ValueError,
+            RuntimeError,
+            subprocess.CalledProcessError,
+        ) as error:
+            print(f"Cannot assemble: {error}", file=sys.stderr)
+            return 2
+        print(video.resolve())
         return 0
     if args.command == "explore":
         from animoz.projects.puerta_court.explorer import write_viewer

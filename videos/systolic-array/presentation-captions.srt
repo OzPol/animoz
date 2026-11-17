@@ -1,0 +1,183 @@
+1
+00:00:00,600 --> 00:00:10,400
+A systolic array is a team of small arithmetic units. We will follow the numbers first, then see why adding units does not guarantee proportional speedup.
+
+2
+00:00:11,733 --> 00:00:20,233
+Our source project compares 2 by 2, 4 by 4, and 8 by 8 grids. Each must complete the same matrix product.
+
+3
+00:00:20,233 --> 00:00:30,933
+A processing element, or PE, repeatedly multiplies two numbers and adds the product to its local running sum. We can understand the entire machine from that one operation.
+
+4
+00:00:32,267 --> 00:00:41,500
+A matrix is a table of numbers. Multiplication pairs one row of A with one column of B to produce one entry of C.
+
+5
+00:00:41,500 --> 00:00:48,867
+A's columns must match B's rows. Here the shared length is 2, so each output sum contains 2 products.
+
+6
+00:00:48,867 --> 00:00:55,867
+The index k walks through the matching entries. The summation sign means that we add every matched product.
+
+7
+00:00:56,333 --> 00:01:03,333
+The running sum is 0. Multiply 1 by 5, then add that product. The new sum is 5.
+
+8
+00:01:03,333 --> 00:01:10,333
+The running sum is 5. Multiply 2 by 7, then add that product. The new sum is 19.
+
+9
+00:01:10,833 --> 00:01:17,833
+That completes one output entry. It stays in C while the same row-column rule fills the other positions.
+
+10
+00:01:26,400 --> 00:01:36,000
+The completed matrix contains every row-column dot product. The arithmetic rule is simple; the architectural challenge is delivering each matching pair at the right time.
+
+11
+00:01:37,333 --> 00:01:46,200
+Now place each output in one processing element. A operands move right. B operands move down. The partial sum stays where it is.
+
+12
+00:01:46,200 --> 00:01:57,267
+The inputs are staggered at the edges. A matching pair meets at PE[i,j] when step = i + j + k. This creates a diagonal wave of useful work.
+
+13
+00:01:57,267 --> 00:02:04,633
+Each multiply-and-add is one MAC. A PE without a matching operand pair on this step keeps its current sum.
+
+14
+00:02:06,167 --> 00:02:14,300
+Only the first PE has matching inputs initially. Its first product enters the local accumulator. Later steps activate more PEs together.
+
+15
+00:02:19,967 --> 00:02:28,833
+At the final step the 4 accumulators hold the same answers as ordinary matrix multiplication. Passing operands locally did not change the mathematics.
+
+16
+00:02:28,833 --> 00:02:35,833
+Once a tile finishes, its outputs are captured. The accumulators can then be cleared for the next tile.
+
+17
+00:02:37,167 --> 00:02:44,533
+A P by P grid contains P squared processing elements. Doubling P gives four times as many arithmetic units.
+
+18
+00:02:44,533 --> 00:02:53,767
+For P equal to 4, that is 16 PEs. But a fully supplied boundary step may also need 8 combined A and B words.
+
+19
+00:02:53,767 --> 00:03:03,000
+For P equal to 8, that is 64 PEs. But a fully supplied boundary step may also need 16 combined A and B words.
+
+20
+00:03:03,000 --> 00:03:12,233
+Compute capacity grows with area, P squared. Peak boundary demand grows with edge length, 2P. We must compare both with the available input budget.
+
+21
+00:03:13,567 --> 00:03:24,267
+Consider one full boundary step for a 8 by 8 grid. It needs 16 combined operand words. Our configured interface supplies at most 8 words per physical clock.
+
+22
+00:03:24,267 --> 00:03:30,900
+Physical clock 1: 8 of 16 words are now staged. The grid still holds all its registers.
+
+23
+00:03:30,900 --> 00:03:38,667
+Physical clock 2: 16 of 16 words are now staged. The complete step is ready, so the grid can advance.
+
+24
+00:03:39,433 --> 00:03:50,133
+A clock is a hardware tick. The example register stayed at 5 while waiting. Only the completed input step allowed 5 plus 2 times 7 to become 19.
+
+25
+00:03:50,133 --> 00:03:59,733
+This example uses a full interior boundary step. Actual demand is smaller during fill and drain, so the complete cycle model counts every step separately.
+
+26
+00:04:01,067 --> 00:04:09,567
+The complete system must supply operands, perform arithmetic, and deliver results. Improving only the arithmetic leaves the other costs in the path.
+
+27
+00:04:09,567 --> 00:04:18,067
+We will separate these costs: input stalls, the finite matrix schedule, tile capture, and serial readout. That makes the performance comparison explainable.
+
+28
+00:04:19,400 --> 00:04:27,900
+A 2 by 2 grid stores one output tile at a time. A complete 8 by 8 product requires 16 such tiles.
+
+29
+00:04:27,900 --> 00:04:35,667
+The tiles proceed across each row. Green entries have been captured and stay stored while the processing elements move on.
+
+30
+00:04:39,400 --> 00:04:47,167
+Each tile still streams the full inner dimension. Capture its results, clear the accumulators, then start the next output tile.
+
+31
+00:04:47,767 --> 00:04:56,267
+A 4 by 4 grid stores one output tile at a time. A complete 8 by 8 product requires 4 such tiles.
+
+32
+00:04:58,467 --> 00:05:06,967
+A 8 by 8 grid stores one output tile at a time. A complete 8 by 8 product requires 1 such tiles.
+
+33
+00:05:07,667 --> 00:05:15,433
+Tiling lets smaller hardware compute the same full answer. It changes scheduling and overhead; it does not discard matrix entries.
+
+34
+00:05:16,767 --> 00:05:26,000
+The source RTL project records 18 configurations, with eight numerical cases each: 144 passing cases. The reported results come from the saved source experiment.
+
+35
+00:05:26,000 --> 00:05:35,233
+Our animation model independently checks the matrix outputs and reproduces every recorded cycle schedule. It does not rerun Vivado or claim new FPGA measurements.
+
+36
+00:05:35,233 --> 00:05:42,600
+The word budget is a controlled RTL input model. It is not a measurement of physical KV260 memory bandwidth.
+
+37
+00:05:43,933 --> 00:05:53,900
+Keep the same 8 by 8 grid and the same 16 by 16 product. The useful arithmetic does not change; only the input word budget changes.
+
+38
+00:05:53,900 --> 00:06:01,667
+The computed schedules are 304, 184, and 124 clocks. The blue stall segment shrinks as more operands arrive per clock.
+
+39
+00:06:01,667 --> 00:06:10,167
+From the smallest to largest input budget, latency falls by 59 percent. The mint advance work and gold capture work remain unchanged.
+
+40
+00:06:11,500 --> 00:06:19,633
+Computation finishing does not mean the whole answer has left the accelerator. The source design reads one output element per clock.
+
+41
+00:06:21,500 --> 00:06:31,100
+A complete 16 by 16 output has 256 elements. Serial delivery adds exactly 256 clocks after compute. The counter now fast-forwards through the remaining outputs.
+
+42
+00:06:34,100 --> 00:06:43,333
+At full supply, 124 compute clocks become 380 clocks for the complete product. The same 256-clock readout cost is included in the smaller-grid baseline.
+
+43
+00:06:43,733 --> 00:06:51,867
+Speedup means baseline clocks divided by candidate clocks. Including readout changes the result substantially, even though the arithmetic hardware is identical.
+
+44
+00:06:53,200 --> 00:07:03,533
+Larger grids were fastest in the recorded sweep, but extra PEs did not produce proportional speedup. Operand supply, finite scheduling, and result delivery each limited the gain.
+
+45
+00:07:03,533 --> 00:07:13,867
+A smaller grid can be a deliberate choice when DSP resources matter more than minimum latency. The right answer depends on the complete workload and system constraints.
+
+46
+00:07:13,867 --> 00:07:21,233
+The matrix rule never changed. What changed was how quickly the system could feed, execute, and finish that rule.

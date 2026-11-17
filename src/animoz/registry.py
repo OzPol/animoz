@@ -16,6 +16,7 @@ class Project:
     description: str
     scenes: dict[str, tuple[str, str]]
     camera_scenes: tuple[str, ...] = ()
+    film_scenes: tuple[str, ...] = ()
 
     def scene_file(self) -> Path:
         module = import_module(self.package)
@@ -62,5 +63,25 @@ PROJECTS = {
             "replay": ("Replay", "Replay one motion model from any configured camera."),
         },
         camera_scenes=("survey-view", "replay"),
+        film_scenes=("survey", "physics", "replay"),
+    ),
+    "systolic-array": Project(
+        slug="systolic-array",
+        package="animoz.projects.systolic_array",
+        description="Animated presentation: matrix arithmetic, systolic wavefronts, stalls, tiling, and measured performance.",
+        scenes={
+            "presentation": (
+                "Presentation",
+                "The complete source-grounded animated presentation.",
+            ),
+            "matrices": (
+                "Matrices",
+                "Build the matrix product by highlighting rows, columns, and partial sums.",
+            ),
+            "dataflow": (
+                "Dataflow",
+                "Follow matching operands and local accumulators through each clock step.",
+            ),
+        },
     ),
 }
