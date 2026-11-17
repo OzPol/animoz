@@ -15,6 +15,7 @@ class Project:
     package: str
     description: str
     scenes: dict[str, tuple[str, str]]
+    camera_scenes: tuple[str, ...] = ()
 
     def scene_file(self) -> Path:
         module = import_module(self.package)
@@ -40,5 +41,26 @@ PROJECTS = {
                 "Replay one trajectory from three fixed viewpoints.",
             ),
         },
-    )
+    ),
+    "puerta-court": Project(
+        slug="puerta-court",
+        package="animoz.projects.puerta_court",
+        description="Measured corner geometry, explicit motion physics, and selectable camera views.",
+        scenes={
+            "survey": (
+                "SurveyFilm",
+                "Explain the measured dimensions and open constraints.",
+            ),
+            "survey-view": (
+                "SurveyView",
+                "Inspect the same measured site from a selected viewpoint.",
+            ),
+            "physics": (
+                "PhysicsFilm",
+                "Explain speeds, stops, creep, and the limits of the evidence.",
+            ),
+            "replay": ("Replay", "Replay one motion model from any configured camera."),
+        },
+        camera_scenes=("survey-view", "replay"),
+    ),
 }

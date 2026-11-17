@@ -1,0 +1,566 @@
+{
+  "status": "SOURCE_CONSTRAINT_MODEL_ENDPOINT_REVIEW_OPEN",
+  "units": "inch",
+  "one_model_unit_in": 1,
+  "frame": {
+    "origin": "O: projected N-S / E-W wall-face intersection",
+    "x": "east",
+    "y": "north",
+    "z": "up",
+    "handedness": "right"
+  },
+  "sources": {
+    "original_pdf": "Accident_sketches copy 2.pdf",
+    "vehicle_url": "https://media.toyota.ca/content/dam/media-toyota/general/specifications/07avalon_spec_e.pdf"
+  },
+  "source_measurements": {
+    "01a": {
+      "source_view": "01",
+      "value_in": 190,
+      "direction": "N-S",
+      "endpoints": "Green longitudinal span between the marked crossing joints.",
+      "status": "Recorded; not treated as the complete asphalt width."
+    },
+    "01b": {
+      "source_view": "01",
+      "value_in": 110,
+      "direction": "E-W",
+      "endpoints": "Sidewalk/outer-apron edge to curb-side concrete reference.",
+      "status": "Recorded; endpoint registration to the corner remains open."
+    },
+    "01c": {
+      "source_view": "01",
+      "value_in": 74,
+      "direction": "N-S",
+      "endpoints": "Small red far-crossing extension.",
+      "status": "Reading 74; exact endpoint association remains open."
+    },
+    "03a": {
+      "source_view": "03",
+      "value_in": 60,
+      "direction": "plan",
+      "endpoints": "Orange corner reference on the hand-traced view.",
+      "status": "Retained; not substituted for another 60-inch quantity."
+    },
+    "03b": {
+      "source_view": "03",
+      "value_in": 62,
+      "direction": "plan",
+      "endpoints": "Orange wall/access-road strip reference.",
+      "status": "Retained; endpoints differ from the 8-inch post datum."
+    },
+    "04a": {
+      "source_view": "04",
+      "value_in": 64,
+      "direction": "N-S",
+      "endpoints": "Corner-start plane A to the nearer/north post reference.",
+      "status": "Corner-local interpretation; distinct from the 68-inch face."
+    },
+    "04b": {
+      "source_view": "04",
+      "value_in": 68,
+      "direction": "N-S",
+      "endpoints": "Corner-start plane A to the farther/south post reference.",
+      "status": "Corner-local interpretation."
+    },
+    "04c": {
+      "source_view": "04",
+      "value_in": 4,
+      "direction": "N-S",
+      "endpoints": "Difference between the two post-face references.",
+      "status": "68 - 64 = 4; also written as post width in source 04."
+    },
+    "05a": {
+      "source_view": "05",
+      "value_in": 16,
+      "direction": "E-W",
+      "endpoints": "Projected N-S wall line to the stop-post reference line.",
+      "status": "Sets local post x = 16; not an extra wall ledge."
+    },
+    "05b": {
+      "source_view": "05",
+      "value_in": 38,
+      "direction": "N-S",
+      "endpoints": "Offset from A reference plane for curve sample Q2.",
+      "status": "Paired with 05c; direction inferred from the annotated construction."
+    },
+    "05c": {
+      "source_view": "05",
+      "value_in": 42,
+      "direction": "E-W",
+      "endpoints": "Post reference to curve sample Q2.",
+      "status": "Paired with 05b; do not confuse with the asphalt 42-inch span."
+    },
+    "06a": {
+      "source_view": "06",
+      "value_in": 21,
+      "direction": "N-S",
+      "endpoints": "Offset from A reference plane for curve sample Q1.",
+      "status": "Paired with 06b; distinct from the soil clearance of 21 inches."
+    },
+    "06b": {
+      "source_view": "06",
+      "value_in": 39,
+      "direction": "E-W",
+      "endpoints": "Post reference to curve sample Q1.",
+      "status": "Paired with 06a."
+    },
+    "07a": {
+      "source_view": "07",
+      "value_in": 59,
+      "direction": "N-S",
+      "endpoints": "Offset from A reference plane for curve sample Q3.",
+      "status": "Paired with 07b; distinct from sidewalk width/slab lengths."
+    },
+    "07b": {
+      "source_view": "07",
+      "value_in": 52,
+      "direction": "E-W",
+      "endpoints": "Post reference to curve sample Q3.",
+      "status": "Paired with 07a."
+    },
+    "07c": {
+      "source_view": "07",
+      "value_in": 78,
+      "direction": "E-W",
+      "endpoints": "Post reference to the far corner/curve-end reference.",
+      "status": "78 and 8 are perpendicular; never add them as one length."
+    },
+    "07d": {
+      "source_view": "07",
+      "value_in": 8,
+      "direction": "N-S",
+      "endpoints": "Farther/south post baseline to the E-W wall reference.",
+      "status": "Provides the other corner projection leg: 68 - 8."
+    },
+    "07e": {
+      "source_view": "07",
+      "value_in": 72,
+      "direction": "Z",
+      "endpoints": "Access-road wall height.",
+      "status": "Elevation; not a ground-plane setback."
+    },
+    "10a": {
+      "source_view": "10",
+      "value_in": 14,
+      "direction": "Z",
+      "endpoints": "Streetlight base height.",
+      "status": "Elevation only."
+    },
+    "10b": {
+      "source_view": "10",
+      "value_in": 16,
+      "direction": "E-W",
+      "endpoints": "Streetlight base transverse width.",
+      "status": "Separate object and direction from the 16-inch stop-post gap."
+    },
+    "10c": {
+      "source_view": "10",
+      "value_in": 21,
+      "direction": "E-W",
+      "endpoints": "Sidewalk edge to one wall-face reference.",
+      "status": "Measured local soil gap; face association must follow photo 10."
+    },
+    "10d": {
+      "source_view": "10",
+      "value_in": 31,
+      "direction": "E-W",
+      "endpoints": "Sidewalk edge to the other wall-face reference.",
+      "status": "31-inch corner-face registration is shown as an interpretation."
+    },
+    "10e": {
+      "source_view": "10",
+      "value_in": 8,
+      "direction": "return",
+      "endpoints": "Short red wall-return dimension.",
+      "status": "Retained; not equated to the 31 - 21 difference."
+    },
+    "10f": {
+      "source_view": "10",
+      "value_in": 13,
+      "direction": "return",
+      "endpoints": "Second short red wall-return dimension.",
+      "status": "Retained; exact 3D return endpoints remain unregistered."
+    },
+    "11a": {
+      "source_view": "11",
+      "value_in": 70,
+      "direction": "Z",
+      "endpoints": "Wall height beside the streetlight.",
+      "status": "Not averaged with the separate 72-inch access-wall height."
+    },
+    "13a": {
+      "source_view": "13",
+      "value_in": 120,
+      "direction": "N-S",
+      "endpoints": "Broad wall-face end to end.",
+      "status": "Used with 53, base longitudinal size, and 51."
+    },
+    "13b": {
+      "source_view": "13",
+      "value_in": 43.5,
+      "direction": "N-S",
+      "endpoints": "Adjoining last straight wall face.",
+      "status": "Ends at corner start A."
+    },
+    "13c": {
+      "source_view": "13",
+      "value_in": 53,
+      "direction": "N-S",
+      "endpoints": "North wall-face end to north streetlight-base face.",
+      "status": "Part of the closed 120-inch chain."
+    },
+    "13d": {
+      "source_view": "13",
+      "value_in": 51,
+      "direction": "N-S",
+      "endpoints": "South streetlight-base face to south wall-face end.",
+      "status": "Part of the closed 120-inch chain."
+    },
+    "13e": {
+      "source_view": "13",
+      "value_in": 26,
+      "direction": "N-S",
+      "endpoints": "North sidewalk joint of pole slab to north base reference.",
+      "status": "Endpoint interpretation used in the closure check."
+    },
+    "13f": {
+      "source_view": "13",
+      "value_in": 69,
+      "direction": "N-S",
+      "endpoints": "Pole-bearing sidewalk slab, joint to joint.",
+      "status": "Also annotated in source 15; one physical slab."
+    },
+    "13g": {
+      "source_view": "13",
+      "value_in": 59,
+      "direction": "N-S",
+      "endpoints": "Next marked slab north of the pole slab.",
+      "status": "Recorded as its own length."
+    },
+    "13h": {
+      "source_view": "13",
+      "value_in": 60,
+      "direction": "N-S",
+      "endpoints": "Following marked slab north of that slab.",
+      "status": "Recorded as its own length."
+    },
+    "15a": {
+      "source_view": "15",
+      "value_in": 59,
+      "direction": "E-W",
+      "endpoints": "Sidewalk clear width, repeatedly annotated.",
+      "status": "Width is distinct from 59-inch longitudinal slabs."
+    },
+    "15b": {
+      "source_view": "15",
+      "value_in": 56,
+      "direction": "N-S",
+      "endpoints": "Nearest corner slab, S0.",
+      "status": "Source chain S0, S1, S2, pole slab."
+    },
+    "15c": {
+      "source_view": "15",
+      "value_in": 59,
+      "direction": "N-S",
+      "endpoints": "Next slab north, S1.",
+      "status": "Separate physical interval."
+    },
+    "15d": {
+      "source_view": "15",
+      "value_in": 59,
+      "direction": "N-S",
+      "endpoints": "Next slab north, S2.",
+      "status": "Separate physical interval."
+    },
+    "15e": {
+      "source_view": "15",
+      "value_in": 69,
+      "direction": "N-S",
+      "endpoints": "Pole slab.",
+      "status": "Duplicate observation of physical interval 13f."
+    },
+    "15f": {
+      "source_view": "15",
+      "value_in": 60,
+      "direction": "N-S",
+      "endpoints": "Farther north marked slab.",
+      "status": "Recorded beyond the detailed corner region."
+    },
+    "15g": {
+      "source_view": "15",
+      "value_in": 60,
+      "direction": "N-S",
+      "endpoints": "Next farther north marked slab.",
+      "status": "Recorded beyond the detailed corner region."
+    },
+    "15h": {
+      "source_view": "15",
+      "value_in": 12,
+      "direction": "N-S",
+      "endpoints": "Extended corner-slab joint to the blue post-face reference.",
+      "status": "12, not 72; reference lines extend across the sidewalk."
+    },
+    "15i": {
+      "source_view": "15",
+      "value_in": 42,
+      "direction": "N-S",
+      "endpoints": "Other post-side reference to the marked asphalt edge.",
+      "status": "Separate from 05c, which runs E-W."
+    },
+    "V1": {
+      "source_view": "Toyota",
+      "value_in": 197.2,
+      "direction": "length",
+      "endpoints": "2007 Avalon overall length.",
+      "status": "Official Toyota specification; rounded published inch value."
+    },
+    "V2": {
+      "source_view": "Toyota",
+      "value_in": 72.8,
+      "direction": "width",
+      "endpoints": "2007 Avalon overall width.",
+      "status": "Official Toyota specification."
+    },
+    "V3": {
+      "source_view": "Toyota",
+      "value_in": 58.5,
+      "direction": "height",
+      "endpoints": "2007 Avalon overall height.",
+      "status": "Official Toyota specification."
+    },
+    "V4": {
+      "source_view": "Toyota",
+      "value_in": 111.0,
+      "direction": "wheelbase",
+      "endpoints": "2007 Avalon wheelbase.",
+      "status": "Official Toyota specification; axle placement still needs overhang split."
+    }
+  },
+  "interpretations": {
+    "post_x": {
+      "value": 16,
+      "formula": "05a = 16",
+      "qualification": "Common E-W post reference; post edge/center distinction not fully registered."
+    },
+    "corner_A": [
+      0,
+      60
+    ],
+    "corner_B": [
+      94,
+      0
+    ],
+    "corner_O": [
+      0,
+      0
+    ],
+    "corner_projection_in": {
+      "east_west": 94,
+      "north_south": 60,
+      "formulas": [
+        "05a + 07c",
+        "04b - 07d"
+      ]
+    },
+    "stop_reference_north": [
+      16,
+      -4
+    ],
+    "stop_reference_south": [
+      16,
+      -8
+    ],
+    "corner_profile_samples": [
+      [
+        0,
+        60
+      ],
+      [
+        55,
+        39
+      ],
+      [
+        58,
+        22
+      ],
+      [
+        68,
+        1
+      ],
+      [
+        94,
+        0
+      ]
+    ],
+    "curve_between_samples": null,
+    "wall120_NS_interval": [
+      103.5,
+      223.5
+    ],
+    "last43_5_NS_interval": [
+      60,
+      103.5
+    ],
+    "wall_face_EW_registration": {
+      "corner_face_gap_in": 31,
+      "other_face_gap_in": 21,
+      "status": "Photo-10 face assignment interpreted, not a closed surveyed registration."
+    },
+    "streetlight_base": {
+      "north_south_size_in": 16,
+      "east_west_size_in": 16,
+      "height_in": 14,
+      "north_south_interval": [
+        154.5,
+        170.5
+      ],
+      "center_north": 162.5,
+      "east_west_position": null,
+      "alignment_note": "Drawn at wall-side sidewalk edge from photos; exact offset not measured/registered."
+    },
+    "sidewalk": {
+      "width_in": 59,
+      "east_x": -31,
+      "west_x": -90,
+      "registration_status": "Conditional on corner face = 31-inch soil-gap endpoint.",
+      "northing_of_joints_wall_chain": [
+        -46.5,
+        9.5,
+        68.5,
+        127.5,
+        196.5,
+        255.5,
+        315.5,
+        375.5
+      ]
+    },
+    "road_near_reference_north": -50
+  },
+  "constraint_checks": [
+    {
+      "description": "120-inch wall face closes over pole-base interval",
+      "formula": "53 + (120 - 53 - 51) + 51 = 120",
+      "residual_in": 0
+    },
+    {
+      "description": "Post-face separation",
+      "formula": "68 - 64 = 4",
+      "residual_in": 0
+    },
+    {
+      "description": "Sidewalk/post and wall/base chain disagreement",
+      "formula": "[43.5 + 51 + 16 + 26 - 69 - 59 - 59] + 64 - 12",
+      "residual_in": 1.5,
+      "note": "No averaging, rounding, or hidden geometry shift applied. Edge/center endpoint association can change this residual."
+    },
+    {
+      "description": "Wall-return notes not equated to the two soil gaps",
+      "formula": "31 - 21 = 10; source also has separate 8 and 13 return notes",
+      "residual_in": null,
+      "note": "Return endpoints must be registered; do not silently replace any of the source values."
+    }
+  ],
+  "vehicle": {
+    "length_in": 197.2,
+    "width_in": 72.8,
+    "height_in": 58.5,
+    "wheelbase_in": 111.0,
+    "driver_side": "south for westbound vehicle",
+    "passenger_side": "north for westbound vehicle"
+  },
+  "user_requested_contact": {
+    "front_bumper": true,
+    "car_front_at_sidewalk_midpoint_scenario": true,
+    "front_x_if_31_inch_face_registration": -60.5,
+    "lateral_offset_in": null,
+    "lateral_description": "Close to, and on passenger side of, the longitudinal car centerline."
+  },
+  "unregistered_parameters": {
+    "car_lane_y": null,
+    "actual_stop_clearance": null,
+    "driver_eye_xyz_in_car": null,
+    "bicycle_length": null,
+    "rider_body_and_eye_height": null,
+    "bicycle_frontwheel_to_contact_relation": null,
+    "actual_vehicle_speed_time_history": null,
+    "actual_bicycle_speed_time_history": null,
+    "wall_thickness_and_exact_returns": null,
+    "curve_between_samples": null
+  },
+  "visibility": {
+    "computed": false,
+    "forced_switches": false,
+    "reason": "A full wall surface and registered eye/rider poses are required."
+  },
+  "prohibited_previous_inputs": {
+    "sign_east_offset_72": "Removed: source reads 12 along the sidewalk, not a 72-inch east offset.",
+    "initial_35_inch_wall_ledge": "Removed: 16-inch local reference must connect wall axis to post.",
+    "contact_offset_6": "Removed; unmeasured.",
+    "driver_eye_100_18_42": "Removed; unmeasured.",
+    "forced_visibility_at_sidewalk_midpoint": "Removed; no physical inference from a programmed threshold."
+  },
+  "view_checklist": [
+    {
+      "id": "P1",
+      "view": "North-up master plan",
+      "rule": "Orthographic; x east, y north. All metric ratios identical.",
+      "status": "Built; local registration interpretation and 1.5-inch closure flagged."
+    },
+    {
+      "id": "P2",
+      "view": "Corner projection close-up",
+      "rule": "Show both dotted wall extensions, O, A, B and all sampled offsets.",
+      "status": "P1 construction and coordinate table supplied; no invented smooth wall surface."
+    },
+    {
+      "id": "P3",
+      "view": "Beneva-side oblique",
+      "rule": "Beneva west, access road east; car westbound, bicycle southbound.",
+      "status": "Use one geometry; no mirror or per-view object movement."
+    },
+    {
+      "id": "P4",
+      "view": "Access-road oblique",
+      "rule": "Camera may rotate; driver remains on south side of westbound car.",
+      "status": "Use the same world coordinates as P1/P3."
+    },
+    {
+      "id": "P5",
+      "view": "Side view from south",
+      "rule": "Compare 197.2-inch car with 94-inch corner span and post plane.",
+      "status": "Car envelope comparison built; actual stop clearance unregistered."
+    },
+    {
+      "id": "P6",
+      "view": "Front/bumper detail",
+      "rule": "Contact is just passenger/north side of lengthwise centerline.",
+      "status": "No numeric lateral offset is supplied/registered; previous 6 inches removed."
+    },
+    {
+      "id": "P7",
+      "view": "Driver view at stop",
+      "rule": "Reference actual IMG_1119-IMG_1125 frames; wall hides pole base.",
+      "status": "Eye/camera pose and car pose must be registered before visibility calculation."
+    },
+    {
+      "id": "P8",
+      "view": "Driver creep / first appearance",
+      "rule": "Ray is eye-to-rider; first visibility comes only from geometric occlusion.",
+      "status": "No bumper threshold, pole-passed switch, or forced green ray."
+    },
+    {
+      "id": "P9",
+      "view": "Cyclist approach / pole detail",
+      "rule": "Bicycle travels north to south; show actual occlusion at pole and wall.",
+      "status": "Bicycle/rider shape and height remain unregistered."
+    },
+    {
+      "id": "P10",
+      "view": "Forward and rewind motion",
+      "rule": "Identical world poses at the same time in every camera.",
+      "status": "2-second entry; 1-second stop; creep; contact; 2-second continuation with car stopped."
+    }
+  ],
+  "numeric_precision_note": "Algebraic output precision is not a claim of field accuracy."
+}

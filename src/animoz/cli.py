@@ -87,13 +87,41 @@ def render(args: argparse.Namespace) -> int:
         print("Run 'animoz doctor' to check the environment.", file=sys.stderr)
         return 2
     aliases = project.scenes if args.scene == "all" else [args.scene]
-    for alias in aliases:
+    jobs = []
+    try:
+        camera_requested = args.view is not None or any(
+            value is not None for value in (args.phi, args.theta, args.zoom)
+        )
+        for alias in aliases:
+            if camera_requested and alias not in project.camera_scenes:
+                if args.scene != "all":
+                    raise ValueError(
+                        "Camera controls apply to: " + ", ".join(project.camera_scenes)
+                    )
+                jobs.append((alias, settings, None))
+                continue
+            views = list(settings.data["views"]) if args.view == "all" else [args.view]
+            for view in views:
+                configured = (
+                    settings.with_camera(view, args.phi, args.theta, args.zoom)
+                    if camera_requested
+                    else settings
+                )
+                name = configured.camera_id if alias in project.camera_scenes else None
+                jobs.append((alias, configured, name))
+    except (AttributeError, KeyError, ValueError) as error:
+        print(f"Cannot configure render: {error}", file=sys.stderr)
+        return 2
+    for alias, settings, view in jobs:
         scene_class = project.scenes[alias][0]
-        run_dir = output_directory(args.output_dir, project.slug, alias)
+        run_dir = output_directory(
+            args.output_dir, project.slug, alias + ("_" + view if view else "")
+        )
         manifest = {
             "project": project.slug,
             "scene": alias,
             "scene_class": scene_class,
+            "view": view,
             "quality": args.quality,
             "python": sys.version.split()[0],
             "manim": metadata.version("manim"),
@@ -168,6 +196,18 @@ def main(argv: list[str] | None = None) -> int:
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("list", help="List the available projects and scenes.")
     subparsers.add_parser("doctor", help="Check Python, Manim, and FFmpeg.")
+    views_parser = subparsers.add_parser(
+        "views", help="List a project's camera presets."
+    )
+    views_parser.add_argument("project", choices=PROJECTS)
+    explorer = subparsers.add_parser(
+        "explore", help="Write an offline interactive Puerta Court viewer."
+    )
+    explorer.add_argument("project", choices=["puerta-court"])
+    explorer.add_argument("--config", type=Path)
+    explorer.add_argument(
+        "--output", type=Path, default=Path("artifacts/puerta-court/viewer.html")
+    )
     renderer = subparsers.add_parser(
         "render", help="Render a scene or a whole project."
     )
@@ -178,6 +218,10 @@ def main(argv: list[str] | None = None) -> int:
         "--config", type=Path, help="Override the project's TOML settings."
     )
     renderer.add_argument("--output-dir", type=Path, default=Path("media"))
+    renderer.add_argument("--view", help="A camera preset, or all.")
+    renderer.add_argument("--phi", type=float, help="Camera polar angle in degrees.")
+    renderer.add_argument("--theta", type=float, help="Camera azimuth in degrees.")
+    renderer.add_argument("--zoom", type=float, help="Positive camera zoom.")
     args = parser.parse_args(argv)
     if args.command == "list":
         for project in PROJECTS.values():
@@ -187,4 +231,17 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "doctor":
         return doctor()
+    if args.command == "views":
+        settings = PROJECTS[args.project].load_settings()
+        for name, pose in getattr(settings, "data", {}).get("views", {}).items():
+            print(
+                f"{name}: phi={pose['phi']:g}, theta={pose['theta']:g}, zoom={pose['zoom']:g}"
+            )
+        return 0
+    if args.command == "explore":
+        from animoz.projects.puerta_court.explorer import write_viewer
+
+        write_viewer(PROJECTS[args.project].load_settings(args.config), args.output)
+        print(args.output.resolve())
+        return 0
     return render(args)

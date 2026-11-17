@@ -21,6 +21,7 @@ where = ["src"]
 [tool.setuptools.package-data]
 "animoz" = ["runtime.toml"]
 "animoz.projects.intro" = ["*.toml"]
+"animoz.projects.puerta_court" = ["*.toml", "*.json", "*.csv", "*.html"]
 
 [tool.uv]
 # Patched floor for the optional notebook dependency (GHSA-mmhr-3c5m-f64f).

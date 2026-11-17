@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puerta Court: one model, selectable views</title>
+<style>
+body{margin:0;background:#f8fafc;color:#17212b;font:17px system-ui}main{max-width:1200px;margin:auto;padding:24px}h1{font:36px Georgia;margin:0 0 12px}p{line-height:1.5;max-width:1000px}fieldset{border:1px solid #cbd5e1;display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin:18px 0;padding:16px}label{display:grid;gap:5px}button,select{font:inherit;padding:7px 12px}input[type=range]{width:160px}canvas{width:100%;height:510px;border:1px solid #cbd5e1;background:white}output{font-variant-numeric:tabular-nums}code{display:block;white-space:normal;padding:14px;background:#edf1f5;line-height:1.5}#status{min-height:28px}a{color:#087f8c}.legend{color:#536273;font-size:15px} @media(max-width:650px){canvas{height:390px}main{padding:14px}}
+</style><main>
+<h1>Puerta Court</h1><p>The measured site and motion hypothesis share one coordinate convention. Rotate the view, scrub time, and export the matching camera command. No web service or external scripts are used.</p>
+<fieldset><label>Scene<select id="scene"><option value="site">Measured site</option><option value="motion">Motion hypothesis</option></select></label><label>Camera preset<select id="view"></select></label><label>Polar angle <output id="phiv"></output><input id="phi" type="range" min="0" max="89" step="1"></label><label>Azimuth <output id="thetav"></output><input id="theta" type="range" min="-180" max="180" step="1"></label><label>Zoom<input id="zoom" type="range" min="0.4" max="2.5" value="1" step="0.05"></label></fieldset>
+<fieldset><button id="play">Play</button><label>Model time <output id="timev"></output><input id="time" type="range" min="0" step="0.01" value="0"></label><button id="reset">Reset time</button></fieldset>
+<canvas id="canvas" aria-label="Rotatable measured site and synchronized motion"></canvas><p id="status"></p>
+<p class="legend" id="scope"></p><p>Save an MP4 from this camera using the installed project:</p><code id="command"></code><p><button id="copy">Copy render command</button></p>
+<p class="legend">The browser replays states calculated by the Python model at 60 samples per model second. The Manim export evaluates the equations at its own frame times. The purple interval preserves the unknown contact offset. Driver-eye visibility and impact response require additional evidence.</p>
+</main><script type="application/json" id="data">__MODEL_DATA__</script><script>
+'use strict';
+const data=JSON.parse(document.getElementById('data').textContent), $=id=>document.getElementById(id);
+for(const name of Object.keys(data.views)){$('view').add(new Option(name,name));}
+$('time').max=data.duration;$('view').value=data.camera.view;
+function preset(){const v=data.views[$('view').value];$('phi').value=v.phi;$('theta').value=v.theta;$('zoom').value=v.zoom;draw();}
+function state(){const t=Number($('time').value),index=Math.min(data.frames.length-2,Math.floor(t/data.duration*(data.frames.length-1)));const a=data.frames[index],b=data.frames[index+1],u=(t-a.t)/(b.t-a.t);const r={...a,t};for(const k of ['x','lo','hi','v','a'])r[k]=a[k]+u*(b[k]-a[k]);return r;}
+const canvas=$('canvas'),ctx=canvas.getContext('2d');
+function draw(){
+ const dpr=window.devicePixelRatio||1,w=canvas.clientWidth,h=canvas.clientHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
+ const motion=$('scene').value==='motion',s=state(),phi=Number($('phi').value)*Math.PI/180,theta=(Number($('theta').value)+90)*Math.PI/180;
+ const center=motion?[data.vehicle.length/2,data.presentation.replay_center_north_in,0]:[35,150,0],scale=(motion?Math.min(w/(128/9),h/8)/data.presentation.replay_inches_per_scene_unit:Math.min(w/560,h/550))*Number($('zoom').value);
+ const project=([x,y,z=0])=>{x-=center[0];y-=center[1];z-=center[2];const rx=x*Math.cos(theta)+y*Math.sin(theta),ry=-x*Math.sin(theta)+y*Math.cos(theta);return[w/2+rx*scale,h/2-(ry*Math.cos(phi)+z*Math.sin(phi))*scale];};
+ function line(a,b,color,width=2,dashed=false){ctx.beginPath();ctx.setLineDash(dashed?[5,5]:[]);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...project(a));ctx.lineTo(...project(b));ctx.stroke();ctx.setLineDash([]);}
+ function text(t,p,color='#17212b'){ctx.font='16px Georgia';ctx.fillStyle=color;const [x,y]=project(p);ctx.fillText(t,x+5,y-5);}
+ if(!motion){
+  const [west,east]=data.sidewalk,j=data.joints;line([west,j[0]],[west,j.at(-1)],'#cbd5e1');line([east,j[0]],[east,j.at(-1)],'#cbd5e1');
+  for(let i=0;i<j.length;i++){line([west,j[i]],[east,j[i]],'#cbd5e1');if(i)text(`${j[i]-j[i-1]} in`,[(west+east)/2,(j[i]+j[i-1])/2]);}
+  const c=data.corner,names=['A','Q1','Q2','Q3','B'];line(c.A,[0,data.wall_north],'#17212b',3);line(c.B,[240,0],'#536273',2,true);
+  for(let i=0;i<names.length;i++){const p=c[names[i]];text(names[i],p,'#087f8c');if(i)line(c[names[i-1]],p,'#087f8c',3,true);}
+  line(c.O,c.A,'#cbd5e1',1,true);line(c.O,c.B,'#cbd5e1',1,true);text(`${c.B[0]} in`,[c.B[0]/2,-18]);text(`${c.A[1]} in`,[-20,c.A[1]/2]);line([data.post[0],data.post[1]],[data.post[0],data.post[2]],'#d59b24',5);
+  for(const [x,y,z] of data.heights){line([x,y,0],[x,y,z],'#7654ad',3);text(`${z} in`,[x,y,z],'#7654ad');}
+  $('status').textContent=`Measured corner: 94 × 60 inches. Open closure: ${data.residual} inches.`;
+  $('scope').textContent='Dotted bend segments connect measured samples; they do not define a smooth wall. Sidewalk registration uses the documented 31-inch face interpretation. Height lines are local measured references.';
+ }else{
+  const v=data.vehicle,corners=[[s.x,data.lane-v.width/2],[s.x+v.length,data.lane-v.width/2],[s.x+v.length,data.lane+v.width/2],[s.x,data.lane+v.width/2]];
+  for(let i=0;i<4;i++){const a=corners[i],b=corners[(i+1)%4];line(a,b,'#087f8c',3);line([...a,v.height],[...b,v.height],'#087f8c');line(a,[...a,v.height],'#087f8c');}
+  line([s.x,data.lane],[s.x,data.lane+v.width/2],'#d59b24',6);line([data.cross_x,s.lo],[data.cross_x,s.hi],'#7654ad',8);line([0,-340],[0,850],'#cbd5e1',1,true);
+  text('Passenger side',[s.x+v.length/2,v.width/2+24]);text('Driver side',[s.x+v.length/2,-v.width/2-24]);
+  $('status').textContent=`t = ${s.t.toFixed(2)} s · ${s.phase} · Car ${s.v.toFixed(2)} mph`;
+  $('scope').textContent='Relative kinematic frame. Lane and contact offset are not registered to the measured site. The gold front-bumper interval is the passenger half, not a selected numeric impact point. This is not an impact-force or first-visibility calculation.';
+ }
+ $('timev').value=s.t.toFixed(2)+' s';$('phiv').value=$('phi').value+'°';$('thetav').value=$('theta').value+'°';
+ $('command').textContent=`uv run --locked --extra manim animoz render puerta-court ${motion?'replay':'survey-view'} --view ${$('view').value} --phi ${$('phi').value} --theta ${$('theta').value} --zoom ${$('zoom').value} --quality high`;
+}
+for(const id of ['phi','theta','zoom','time','scene'])$(id).addEventListener('input',draw);$('view').addEventListener('change',preset);
+let playing=false,last=0;function tick(now){if(playing){if(last){let t=Number($('time').value)+(now-last)/1000;if(t>=data.duration){t=data.duration;playing=false;$('play').textContent='Play';}$('time').value=t;}last=now;draw();}else last=0;requestAnimationFrame(tick);}requestAnimationFrame(tick);
+$('play').onclick=()=>{if(Number($('time').value)>=data.duration)$('time').value=0;playing=!playing;$('play').textContent=playing?'Pause':'Play';};$('reset').onclick=()=>{playing=false;$('play').textContent='Play';$('time').value=0;draw();};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('command').textContent);$('copy').textContent='Copied';}catch{$('copy').textContent='Select and copy the command above';}};
+window.addEventListener('resize',draw);preset();
+</script></html>

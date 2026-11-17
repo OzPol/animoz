@@ -1,0 +1,664 @@
+{
+  "project": "puerta-court",
+  "exported_at_utc": "2026-11-17T07:20:27.018748+00:00",
+  "videos": [
+    {
+      "scene": "physics",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "north-up",
+          "phi": 0.0,
+          "theta": -90.0,
+          "zoom": 1.0,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "physics.mp4",
+      "view": null,
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "15237120/507899",
+      "duration_seconds": 66.132682,
+      "sha256": "245ed7ee334f58587931db59325bb75944d7fd5500f5c7c924f267374fc83c3a",
+      "sidecars": [
+        "physics-captions.srt",
+        "physics-chapters.json",
+        "physics-transcript.md"
+      ]
+    },
+    {
+      "scene": "replay",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "access-road",
+          "phi": 58.0,
+          "theta": -35.0,
+          "zoom": 0.85,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "replay-access-road.mp4",
+      "view": "access-road",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 8.5,
+      "sha256": "a77769e847aeba3edce95b3dc0e4d933304b032c8e2ec2e7e36dc1c0a6f8760e",
+      "sidecars": []
+    },
+    {
+      "scene": "replay",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "beneva",
+          "phi": 58.0,
+          "theta": -145.0,
+          "zoom": 0.85,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "replay-beneva.mp4",
+      "view": "beneva",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 8.5,
+      "sha256": "7e2fb3d401397b236c3715b3c8f3a162f21863503aa4614beacd8382269ee589",
+      "sidecars": []
+    },
+    {
+      "scene": "replay",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "north-up",
+          "phi": 0.0,
+          "theta": -90.0,
+          "zoom": 1.0,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "replay-north-up.mp4",
+      "view": "north-up",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 8.5,
+      "sha256": "66203673b5a7ae4830809854b0b43628b4baf7979c17702937cbe85676309ba6",
+      "sidecars": []
+    },
+    {
+      "scene": "replay",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "south",
+          "phi": 78.0,
+          "theta": -90.0,
+          "zoom": 0.8,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "replay-south.mp4",
+      "view": "south",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 8.5,
+      "sha256": "5a4287e95bbbca91604d4e1ce5bc969313ef1ae547242ab7a8d62c806cb5ba10",
+      "sidecars": []
+    },
+    {
+      "scene": "survey",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "north-up",
+          "phi": 0.0,
+          "theta": -90.0,
+          "zoom": 1.0,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "survey.mp4",
+      "view": null,
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "25397760/846577",
+      "duration_seconds": 110.23138,
+      "sha256": "e0b659e0cfdd92ee7a261b735db17141188b0c0c6245fb14f68ebea92b9dfcc4",
+      "sidecars": [
+        "survey-captions.srt",
+        "survey-chapters.json",
+        "survey-transcript.md"
+      ]
+    },
+    {
+      "scene": "survey-view",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "access-road",
+          "phi": 58.0,
+          "theta": -35.0,
+          "zoom": 0.85,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "survey-view-access-road.mp4",
+      "view": "access-road",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 3.0,
+      "sha256": "00817e5c0c738dd8549a9bf4344799555e4e9756e7f5844bb3751c47700ab7cc",
+      "sidecars": []
+    },
+    {
+      "scene": "survey-view",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "beneva",
+          "phi": 58.0,
+          "theta": -145.0,
+          "zoom": 0.85,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "survey-view-beneva.mp4",
+      "view": "beneva",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 3.0,
+      "sha256": "f89abf4652d6b0036e4a2b776dc4fde4b8500aa12753ee516ee09c2918e4742f",
+      "sidecars": []
+    },
+    {
+      "scene": "survey-view",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "north-up",
+          "phi": 0.0,
+          "theta": -90.0,
+          "zoom": 1.0,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "survey-view-north-up.mp4",
+      "view": "north-up",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 3.0,
+      "sha256": "38fe809b4afd8a495b463822d4875281d8e28e5047f9c40fb1de325855c79117",
+      "sidecars": []
+    },
+    {
+      "scene": "survey-view",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "font": "CMU Serif",
+      "quality": "medium",
+      "settings": {
+        "camera": {
+          "view": "south",
+          "phi": 78.0,
+          "theta": -90.0,
+          "zoom": 0.8,
+          "custom": false
+        },
+        "views": {
+          "north-up": {
+            "phi": 0.0,
+            "theta": -90.0,
+            "zoom": 1.0
+          },
+          "beneva": {
+            "phi": 58.0,
+            "theta": -145.0,
+            "zoom": 0.85
+          },
+          "access-road": {
+            "phi": 58.0,
+            "theta": -35.0,
+            "zoom": 0.85
+          },
+          "south": {
+            "phi": 78.0,
+            "theta": -90.0,
+            "zoom": 0.8
+          }
+        },
+        "motion": {
+          "entry_seconds": 2.0,
+          "stop_seconds": 1.0,
+          "creep_seconds": 2.0,
+          "continuation_seconds": 2.0,
+          "car_peak_mph": 1.0,
+          "bicycle_mph": 9.0,
+          "playback_rate": 1.0
+        },
+        "registration": {
+          "enabled": false,
+          "car_center_north_in": 0.0,
+          "contact_lateral_in": 0.0
+        },
+        "presentation": {
+          "replay_inches_per_scene_unit": 50.0,
+          "replay_center_north_in": 25.0
+        }
+      },
+      "file": "survey-view-south.mp4",
+      "view": "south",
+      "width": 1280,
+      "height": 720,
+      "frame_rate": "30/1",
+      "duration_seconds": 3.0,
+      "sha256": "a3636d2159fa29e40a5cad514a0b9fe038862bc64047b65e9176f6f9f5055839",
+      "sidecars": []
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+id,source_view,value_in,direction,source_endpoints,use_or_limit
+01a,01,190,N-S,Green longitudinal span between the marked crossing joints.,Recorded; not treated as the complete asphalt width.
+01b,01,110,E-W,Sidewalk/outer-apron edge to curb-side concrete reference.,Recorded; endpoint registration to the corner remains open.
+01c,01,74,N-S,Small red far-crossing extension.,Reading 74; exact endpoint association remains open.
+03a,03,60,plan,Orange corner reference on the hand-traced view.,Retained; not substituted for another 60-inch quantity.
+03b,03,62,plan,Orange wall/access-road strip reference.,Retained; endpoints differ from the 8-inch post datum.
+04a,04,64,N-S,Corner-start plane A to the nearer/north post reference.,Corner-local interpretation; distinct from the 68-inch face.
+04b,04,68,N-S,Corner-start plane A to the farther/south post reference.,Corner-local interpretation.
+04c,04,4,N-S,Difference between the two post-face references.,68 - 64 = 4; also written as post width in source 04.
+05a,05,16,E-W,Projected N-S wall line to the stop-post reference line.,Sets local post x = 16; not an extra wall ledge.
+05b,05,38,N-S,Offset from A reference plane for curve sample Q2.,Paired with 05c; direction inferred from the annotated construction.
+05c,05,42,E-W,Post reference to curve sample Q2.,Paired with 05b; do not confuse with the asphalt 42-inch span.
+06a,06,21,N-S,Offset from A reference plane for curve sample Q1.,Paired with 06b; distinct from the soil clearance of 21 inches.
+06b,06,39,E-W,Post reference to curve sample Q1.,Paired with 06a.
+07a,07,59,N-S,Offset from A reference plane for curve sample Q3.,Paired with 07b; distinct from sidewalk width/slab lengths.
+07b,07,52,E-W,Post reference to curve sample Q3.,Paired with 07a.
+07c,07,78,E-W,Post reference to the far corner/curve-end reference.,78 and 8 are perpendicular; never add them as one length.
+07d,07,8,N-S,Farther/south post baseline to the E-W wall reference.,Provides the other corner projection leg: 68 - 8.
+07e,07,72,Z,Access-road wall height.,Elevation; not a ground-plane setback.
+10a,10,14,Z,Streetlight base height.,Elevation only.
+10b,10,16,E-W,Streetlight base transverse width.,Separate object and direction from the 16-inch stop-post gap.
+10c,10,21,E-W,Sidewalk edge to one wall-face reference.,Measured local soil gap; face association must follow photo 10.
+10d,10,31,E-W,Sidewalk edge to the other wall-face reference.,31-inch corner-face registration is shown as an interpretation.
+10e,10,8,return,Short red wall-return dimension.,Retained; not equated to the 31 - 21 difference.
+10f,10,13,return,Second short red wall-return dimension.,Retained; exact 3D return endpoints remain unregistered.
+11a,11,70,Z,Wall height beside the streetlight.,Not averaged with the separate 72-inch access-wall height.
+13a,13,120,N-S,Broad wall-face end to end.,"Used with 53, base longitudinal size, and 51."
+13b,13,43.5,N-S,Adjoining last straight wall face.,Ends at corner start A.
+13c,13,53,N-S,North wall-face end to north streetlight-base face.,Part of the closed 120-inch chain.
+13d,13,51,N-S,South streetlight-base face to south wall-face end.,Part of the closed 120-inch chain.
+13e,13,26,N-S,North sidewalk joint of pole slab to north base reference.,Endpoint interpretation used in the closure check.
+13f,13,69,N-S,"Pole-bearing sidewalk slab, joint to joint.",Also annotated in source 15; one physical slab.
+13g,13,59,N-S,Next marked slab north of the pole slab.,Recorded as its own length.
+13h,13,60,N-S,Following marked slab north of that slab.,Recorded as its own length.
+15a,15,59,E-W,"Sidewalk clear width, repeatedly annotated.",Width is distinct from 59-inch longitudinal slabs.
+15b,15,56,N-S,"Nearest corner slab, S0.","Source chain S0, S1, S2, pole slab."
+15c,15,59,N-S,"Next slab north, S1.",Separate physical interval.
+15d,15,59,N-S,"Next slab north, S2.",Separate physical interval.
+15e,15,69,N-S,Pole slab.,Duplicate observation of physical interval 13f.
+15f,15,60,N-S,Farther north marked slab.,Recorded beyond the detailed corner region.
+15g,15,60,N-S,Next farther north marked slab.,Recorded beyond the detailed corner region.
+15h,15,12,N-S,Extended corner-slab joint to the blue post-face reference.,"12, not 72; reference lines extend across the sidewalk."
+15i,15,42,N-S,Other post-side reference to the marked asphalt edge.,"Separate from 05c, which runs E-W."
+V1,Toyota,197.2,length,2007 Avalon overall length.,Official Toyota specification; rounded published inch value.
+V2,Toyota,72.8,width,2007 Avalon overall width.,Official Toyota specification.
+V3,Toyota,58.5,height,2007 Avalon overall height.,Official Toyota specification.
+V4,Toyota,111.0,wheelbase,2007 Avalon wheelbase.,Official Toyota specification; axle placement still needs overhang split.

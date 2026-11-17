@@ -20,8 +20,8 @@ unit conversions, configuration validation, and preservation of previous render
 outputs. The render check uses FFprobe to check final H.264 MP4s and compare
 their durations with the model timeline.
 
-CI runs those checks on Python 3.11 and 3.12, renders all three introductory
-scenes, and attaches the final MP4s and their render metadata to the workflow run.
+CI runs those checks on Python 3.11 and 3.12, renders every registered project
+and camera preset, and attaches MP4s, captions, transcripts, and render records.
 A second job builds the Docker image, checks it, and renders the welcome scene.
 The dependency job audits all locked extras, including transitive dependencies,
 against the advisory database and attaches its JSON report. A reported

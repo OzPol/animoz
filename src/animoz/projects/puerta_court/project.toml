@@ -1,0 +1,44 @@
+[camera]
+view = "north-up"
+phi = 0.0
+theta = -90.0
+zoom = 1.0
+custom = false
+
+[views.north-up]
+phi = 0.0
+theta = -90.0
+zoom = 1.0
+
+[views.beneva]
+phi = 58.0
+theta = -145.0
+zoom = 0.85
+
+[views.access-road]
+phi = 58.0
+theta = -35.0
+zoom = 0.85
+
+[views.south]
+phi = 78.0
+theta = -90.0
+zoom = 0.8
+
+[motion]
+entry_seconds = 2.0
+stop_seconds = 1.0
+creep_seconds = 2.0
+continuation_seconds = 2.0
+car_peak_mph = 1.0
+bicycle_mph = 9.0
+playback_rate = 1.0
+
+[registration]
+enabled = false
+car_center_north_in = 0.0
+contact_lateral_in = 0.0
+
+[presentation]
+replay_inches_per_scene_unit = 50.0
+replay_center_north_in = 25.0
