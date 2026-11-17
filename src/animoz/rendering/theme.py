@@ -12,7 +12,7 @@ GOLD = "#D59B24"
 GOLD_LIGHT = "#FFF0CC"
 PURPLE = "#7654AD"
 PURPLE_LIGHT = "#ECE3F8"
-FONT = "DejaVu Sans"
+FONT = "CMU Serif"
 
 
 def label(text: str, size: float = 24, color: str = INK, **kwargs) -> Text:

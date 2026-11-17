@@ -11,10 +11,16 @@
 6. Open the printed MP4 from the file explorer, or download it to play locally.
 
 The container uses Python 3.12, Manim Community 0.22.1, FFmpeg, Cairo, Pango,
-and DejaVu fonts. The Python dependency versions come from `uv.lock`.
+and CMU Serif fonts from the `fonts-cmu` system package. The Python dependency
+versions come from `uv.lock`.
 The intro scenes use text and vector shapes, so they do not need LaTeX.
 Start with a 2-core / 8 GB codespace and low-quality previews; measure the
 actual rendering time before increasing the machine size.
+
+The shared font is selected once in `src/animoz/rendering/theme.py`.
+`animoz doctor` checks that **CMU Serif** is installed. For an existing Codespace
+or Dev Container, run **Dev Containers: Rebuild Container** to install the new
+system font package. [View the font sample](images/cmu-serif.png).
 
 Codespaces compute and storage use your GitHub allowance or billing settings.
 Stopping a codespace stops compute usage; stored files still consume storage.
@@ -59,7 +65,7 @@ On Debian or Ubuntu, install the native dependencies:
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y build-essential pkg-config libcairo2-dev libpango1.0-dev ffmpeg fonts-dejavu-core
+sudo apt-get install -y build-essential pkg-config libcairo2-dev libpango1.0-dev ffmpeg fonts-cmu
 ```
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run:
