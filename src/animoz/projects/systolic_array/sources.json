@@ -1,0 +1,14 @@
+{
+  "presentation": {
+    "filename": "Final_Group2_Systolic_Array_Premium.pptx",
+    "sha256": "80685e468b2aa10ad0b97f00de833c9fe4fee0197044350fa2805c5f291ac0ff",
+    "slide_count": 12
+  },
+  "simulation": {
+    "repository": "https://github.com/OzPol/systolic-array-scaling",
+    "commit": "43a2b31e27406a4c599d02026ceb0ec368094fcd",
+    "path": "results/summary_sim.csv",
+    "sha256": "78c8d73d2be0c872bc71a53b0f3dc0f82de8565f1f4f76591761888a2ae8ac16"
+  },
+  "interpretation": "Human-readable teaching matrices are separate from the saved RTL test inputs. The cycle model is checked against every saved simulation row."
+}

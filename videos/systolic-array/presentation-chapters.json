@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Source slide 1: Systolic Array Scaling",
+    "start_seconds": 0.0
+  },
+  {
+    "title": "Source slide 2: When more hardware stops paying off.",
+    "start_seconds": 10.4
+  },
+  {
+    "title": "Source slide 4: One output is built from a series of products",
+    "start_seconds": 30.933333333333337
+  },
+  {
+    "title": "Source slide 3: What is a systolic array?",
+    "start_seconds": 95.99999999999879
+  },
+  {
+    "title": "Source slide 5: More compute is not automatically more performance",
+    "start_seconds": 155.8333333333313
+  },
+  {
+    "title": "Source slide 6: The 8\u00d78 grid can outgrow its input supply",
+    "start_seconds": 192.23333333333093
+  },
+  {
+    "title": "Source slide 7: Peak compute is only one part of performance",
+    "start_seconds": 239.7333333333305
+  },
+  {
+    "title": "Source slide 8: One design. Controlled comparisons.",
+    "start_seconds": 258.0666666666636
+  },
+  {
+    "title": "Source slide 9: 3 \u00d7 2 \u00d7 3 = 18",
+    "start_seconds": 315.4333333333435
+  },
+  {
+    "title": "Source slide 10: 59%",
+    "start_seconds": 342.6000000000137
+  },
+  {
+    "title": "Source slide 11: 9.81\u00d7",
+    "start_seconds": 370.1666666666839
+  },
+  {
+    "title": "Source slide 12: Balance the entire architecture.",
+    "start_seconds": 411.8666666666919
+  }
+]

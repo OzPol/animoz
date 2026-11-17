@@ -56,7 +56,9 @@ activate the installed environment or prefix them with `uv run --locked --extra 
 
 The [Puerta Court project](docs/puerta-court.md) adds the measured corner,
 explained motion physics, selectable replay cameras, and an offline time/camera
-viewer. Systolic-array development follows on a branch containing those changes.
+viewer. The [systolic-array project](docs/systolic-array.md) animates the final
+presentation through matrix products, operand flow, stalls, tiling, and measured
+performance, on a branch containing the Puerta changes.
 
 ## Notebook requirements
 - Python 3.11.5+

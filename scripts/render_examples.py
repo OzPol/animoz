@@ -7,6 +7,7 @@ from verify_renders import verify
 
 from animoz.cli import main
 from animoz.registry import PROJECTS
+from animoz.rendering.assemble import assemble
 
 
 def render_examples(quality: str, output: Path) -> None:
@@ -18,6 +19,8 @@ def render_examples(quality: str, output: Path) -> None:
         if code:
             raise SystemExit(code)
         verify(Path("media"), output / project.slug, project.slug)
+        if project.film_scenes:
+            assemble(project.slug, output / project.slug)
 
 
 if __name__ == "__main__":

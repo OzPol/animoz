@@ -1,0 +1,27 @@
+1
+00:00:00,600 --> 00:00:09,667
+A matrix is a table of numbers. Multiplication pairs one row of A with one column of B to produce one entry of C.
+
+2
+00:00:09,667 --> 00:00:17,033
+A's columns must match B's rows. Here the shared length is 2, so each output sum contains 2 products.
+
+3
+00:00:17,033 --> 00:00:24,033
+The index k walks through the matching entries. The summation sign means that we add every matched product.
+
+4
+00:00:24,500 --> 00:00:31,500
+The running sum is 0. Multiply 1 by 5, then add that product. The new sum is 5.
+
+5
+00:00:31,500 --> 00:00:38,500
+The running sum is 5. Multiply 2 by 7, then add that product. The new sum is 19.
+
+6
+00:00:39,000 --> 00:00:46,000
+That completes one output entry. It stays in C while the same row-column rule fills the other positions.
+
+7
+00:00:54,567 --> 00:01:04,167
+The completed matrix contains every row-column dot product. The arithmetic rule is simple; the architectural challenge is delivering each matching pair at the right time.
