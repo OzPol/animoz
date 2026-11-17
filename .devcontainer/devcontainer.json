@@ -1,0 +1,26 @@
+{
+  "name": "animoz - Manim Community",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/animoz,type=bind",
+  "workspaceFolder": "/workspaces/animoz",
+  "remoteUser": "vscode",
+  "postCreateCommand": "uv sync --locked --extra manim && .venv/bin/animoz doctor",
+  "remoteEnv": {
+    "PATH": "/workspaces/animoz/.venv/bin:${containerEnv:PATH}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspaces/animoz/.venv/bin/python"
+      }
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "8gb"
+  }
+}

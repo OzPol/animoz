@@ -1,0 +1,70 @@
+name: Manim CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manim-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scenes:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    env:
+      UV_PYTHON: ${{ matrix.python }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install native rendering dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential pkg-config libcairo2-dev libpango1.0-dev \
+            ffmpeg fonts-dejavu-core
+      - name: Install the locked environment
+        run: |
+          python -m pip install uv==0.13.6
+          uv sync --locked --extra manim
+      - name: Check the environment
+        run: uv run --locked --extra manim animoz doctor
+      - name: Test the numerical models and project configuration
+        run: uv run --locked --extra manim python -m unittest discover -s tests -v
+      - name: Render all introductory scenes
+        run: uv run --locked --extra manim animoz render intro all --quality low
+      - name: Verify the rendered videos and metadata
+        run: uv run --locked --extra manim python scripts/verify_renders.py media --save-to artifacts/intro
+      - name: Attach MP4 previews and render records
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: intro-previews-python-${{ matrix.python }}
+          path: artifacts/intro/
+          if-no-files-found: error
+          retention-days: 14
+
+  container:
+    name: Docker environment
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Build the same image used by Codespaces
+        run: docker build --tag animoz-ci .
+      - name: Check the container environment
+        run: docker run --rm animoz-ci animoz doctor
+      - name: Render a scene inside the container
+        run: docker run --rm animoz-ci animoz render intro welcome --quality low

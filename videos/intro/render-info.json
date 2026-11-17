@@ -1,0 +1,63 @@
+{
+  "project": "intro",
+  "exported_at_utc": "2026-11-17T05:06:19.340586+00:00",
+  "videos": [
+    {
+      "file": "welcome.mp4",
+      "scene": "welcome",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "quality": "low",
+      "settings": {
+        "duration_seconds": 4.0,
+        "start_feet": 0.0,
+        "initial_speed_feet_per_second": 2.0,
+        "acceleration_feet_per_second_squared": 0.25
+      },
+      "width": 854,
+      "height": 480,
+      "frame_rate": "307200/20477",
+      "duration_seconds": 6.66569,
+      "sha256": "59a0e2c107a75e9f65573ddd680c45ae3b31300bbdd575fd92ead7cb93cfbabf"
+    },
+    {
+      "file": "motion.mp4",
+      "scene": "motion",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "quality": "low",
+      "settings": {
+        "duration_seconds": 4.0,
+        "start_feet": 0.0,
+        "initial_speed_feet_per_second": 2.0,
+        "acceleration_feet_per_second_squared": 0.25
+      },
+      "width": 854,
+      "height": 480,
+      "frame_rate": "15/1",
+      "duration_seconds": 5.6,
+      "sha256": "bf600c9ce021631943dd9bcbb4cdf1a256cfda1fddda61182a292dda91923451"
+    },
+    {
+      "file": "cameras.mp4",
+      "scene": "cameras",
+      "python": "3.12.14",
+      "manim": "0.22.1",
+      "renderer": "cairo",
+      "quality": "low",
+      "settings": {
+        "duration_seconds": 4.0,
+        "start_feet": 0.0,
+        "initial_speed_feet_per_second": 2.0,
+        "acceleration_feet_per_second_squared": 0.25
+      },
+      "width": 854,
+      "height": 480,
+      "frame_rate": "15/1",
+      "duration_seconds": 16.133333,
+      "sha256": "f05051bd97a8a61dbd25d10573a6263f12255097a364ec20270eeb5b80b86b06"
+    }
+  ]
+}

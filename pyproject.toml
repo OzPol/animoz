@@ -1,5 +1,22 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "animoz"
 version = "0.1.0"
 description = "A personal collection of mathematical, graphical, and experimental animations."
 requires-python = ">=3.11"
+
+[project.optional-dependencies]
+manim = ["manim==0.22.1"]
+notebooks = ["jupyter", "numpy", "matplotlib", "vpython"]
+
+[project.scripts]
+animoz = "animoz.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"animoz.projects.intro" = ["*.toml"]
