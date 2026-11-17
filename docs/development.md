@@ -28,9 +28,9 @@ against the advisory database and attaches its JSON report. A reported
 vulnerability or audit service failure fails the check. See [security](security.md).
 
 The workflow uses read-only repository permissions and commit-pinned actions.
-Checkout does not persist Git credentials. Dependabot proposes weekly updates
-for Python dependencies, the uv bootstrap tool, actions, and the container base;
-updates still require review and passing checks.
+Checkout does not persist Git credentials. Dependency and container updates are
+made manually on working branches and checked before review. Automated version
+bump PRs and Copilot automation are not part of this project.
 
 ## Where videos go
 

@@ -10,4 +10,5 @@
 - Use Manim Community. Do not add direct Pillow imports or Pillow-based export code.
 - Keep shared native dependencies and the font in runtime.toml, and project defaults in each project's TOML. Do not copy their values into Python defaults or installation commands.
 - Audit all locked extras and transitive dependencies with uv audit --locked. Do not suppress advisories to make checks pass.
+- Apply and test dependency updates manually. Do not enable Dependabot, automated version bump PRs, or Copilot automation.
 - Run the unit tests and render affected scenes. Check the resulting video frames before reporting success.
