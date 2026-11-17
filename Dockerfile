@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
+FROM mcr.microsoft.com/devcontainers/python:3.15-bookworm
 
 USER root
 COPY src/animoz/__init__.py src/animoz/runtime.py src/animoz/runtime.toml /tmp/animoz-bootstrap/src/animoz/
