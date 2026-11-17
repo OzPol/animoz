@@ -15,9 +15,9 @@ def elapsed_seconds(value: float) -> float:
 class LinearMotion:
     """Constant-acceleration motion: position = start + speed*t + 0.5*a*t*t."""
 
-    start_feet: float = 0.0
-    initial_speed_feet_per_second: float = 2.0
-    acceleration_feet_per_second_squared: float = 0.25
+    start_feet: float
+    initial_speed_feet_per_second: float
+    acceleration_feet_per_second_squared: float
 
     def __post_init__(self) -> None:
         for value in (

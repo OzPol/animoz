@@ -1,5 +1,5 @@
 .RECIPEPREFIX := >
-.PHONY: setup doctor list preview render test verify save
+.PHONY: setup doctor list preview render test audit verify save
 
 setup:
 >uv sync --locked --extra manim
@@ -18,6 +18,9 @@ render:
 
 test:
 >uv run --locked --extra manim python -m unittest discover -s tests -v
+
+audit:
+>uv audit --locked
 
 verify:
 >uv run --locked --extra manim python scripts/verify_renders.py media

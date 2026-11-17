@@ -2,6 +2,8 @@
 
 from manim import BOLD, Text, VGroup
 
+from animoz.runtime import load_runtime
+
 BACKGROUND = "#F8FAFC"
 INK = "#17212B"
 MUTED = "#536273"
@@ -12,7 +14,7 @@ GOLD = "#D59B24"
 GOLD_LIGHT = "#FFF0CC"
 PURPLE = "#7654AD"
 PURPLE_LIGHT = "#ECE3F8"
-FONT = "CMU Serif"
+FONT = load_runtime().font_family
 
 
 def label(text: str, size: float = 24, color: str = INK, **kwargs) -> Text:

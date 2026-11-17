@@ -41,6 +41,21 @@ class ProjectTests(unittest.TestCase):
                 restored.motion().position(time), settings.motion().position(time)
             )
 
+    def test_partial_override_inherits_changed_packaged_defaults(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "project.toml").write_text(
+                "[motion]\nduration_seconds=2\nstart_feet=17\n"
+                "initial_speed_feet_per_second=3\n"
+                "acceleration_feet_per_second_squared=1\n"
+            )
+            override = root / "override.toml"
+            override.write_text("[motion]\nacceleration_feet_per_second_squared=0\n")
+            with patch("animoz.projects.intro.model.files", return_value=root):
+                settings = load_settings(override)
+            self.assertEqual(settings.duration_seconds, 2)
+            self.assertEqual(settings.motion().position(2), 23)
+
     def test_configuration_typos_and_invalid_values_fail_early(self):
         for content in (
             "[motion]\nduraton_seconds = 4",

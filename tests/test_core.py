@@ -40,8 +40,8 @@ class MotionTests(unittest.TestCase):
     def test_negative_or_nonfinite_time_is_rejected(self):
         for time in (-0.1, math.inf, math.nan):
             with self.subTest(time=time), self.assertRaises(ValueError):
-                LinearMotion().position(time)
+                LinearMotion(0, 2, 0.25).position(time)
 
     def test_nonfinite_parameters_are_rejected(self):
         with self.assertRaises(ValueError):
-            LinearMotion(acceleration_feet_per_second_squared=math.nan)
+            LinearMotion(0, 2, math.nan)

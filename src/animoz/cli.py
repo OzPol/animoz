@@ -12,6 +12,7 @@ from importlib import metadata
 from pathlib import Path
 
 from animoz.registry import PROJECTS
+from animoz.runtime import load_runtime
 
 QUALITIES = {"low": "-ql", "medium": "-qm", "high": "-qh"}
 
@@ -30,17 +31,26 @@ def doctor() -> int:
     try:
         import manim
         import manimpango
-
-        from animoz.rendering.theme import FONT
+        from packaging.requirements import Requirement
 
         print(f"Manim Community: {manim.__version__}")
-        if manim.__version__ != "0.22.1":
+        required_manim = next(
+            Requirement(value)
+            for value in metadata.requires("animoz") or []
+            if Requirement(value).name == "manim"
+        )
+        if not required_manim.specifier.contains(manim.__version__):
             print("Use the locked environment: uv sync --locked --extra manim")
             ok = False
-        font_found = FONT in manimpango.list_fonts()
-        print(f"Font: {FONT} ({'available' if font_found else 'not installed'})")
+        runtime = load_runtime()
+        font_found = runtime.font_family in manimpango.list_fonts()
+        print(
+            f"Font: {runtime.font_family} ({'available' if font_found else 'not installed'})"
+        )
         if not font_found:
-            print("Install fonts-cmu or rebuild the development container.")
+            print(
+                f"Install {runtime.font_package} or rebuild the development container."
+            )
             ok = False
     except (ImportError, OSError) as error:
         print(f"Manim: unavailable ({error})")
@@ -67,12 +77,15 @@ def render(args: argparse.Namespace) -> int:
     try:
         settings = project.load_settings(args.config)
         metadata.version("manim")
-    except (OSError, ValueError, metadata.PackageNotFoundError) as error:
+        import manimpango
+
+        font = load_runtime().font_family
+        if font not in manimpango.list_fonts():
+            raise ValueError(f"Required font {font!r} is not installed.")
+    except (ImportError, OSError, ValueError, metadata.PackageNotFoundError) as error:
         print(f"Cannot render: {error}", file=sys.stderr)
         print("Run 'animoz doctor' to check the environment.", file=sys.stderr)
         return 2
-    from animoz.rendering.theme import FONT
-
     aliases = project.scenes if args.scene == "all" else [args.scene]
     for alias in aliases:
         scene_class = project.scenes[alias][0]
@@ -85,7 +98,7 @@ def render(args: argparse.Namespace) -> int:
             "python": sys.version.split()[0],
             "manim": metadata.version("manim"),
             "renderer": "cairo",
-            "font": FONT,
+            "font": font,
             "settings": settings.as_dict(),
             "started_at_utc": datetime.now(timezone.utc).isoformat(),
             "status": "running",

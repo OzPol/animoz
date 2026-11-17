@@ -8,11 +8,10 @@ from manim import (
     ORIGIN,
     UP,
     Arrow,
-    Create,
     Cube,
     Dot,
     FadeIn,
-    LaggedStart,
+    GrowArrow,
     NumberLine,
     Polygon,
     Rectangle,
@@ -77,12 +76,16 @@ class Welcome(Scene):
             name_mob = label(name, 28).move_to([x, 0.35, 0])
             detail_mob = label(detail, 19).move_to([x, -0.3, 0])
             cards.add(VGroup(box, name_mob, detail_mob))
-        self.play(LaggedStart(*(FadeIn(card) for card in cards), lag_ratio=0.25))
         arrows = VGroup(
-            Arrow([-2.5, 0, 0], [-1.9, 0, 0], buff=0, color=MUTED),
-            Arrow([1.9, 0, 0], [2.5, 0, 0], buff=0, color=MUTED),
+            *(
+                Arrow(left.get_right(), right.get_left(), buff=0.1, color=MUTED)
+                for left, right in zip(cards[:-1], cards[1:], strict=True)
+            )
         )
-        self.play(Create(arrows), run_time=0.5)
+        self.play(FadeIn(cards[0]), run_time=0.5)
+        for arrow, card in zip(arrows, cards[1:], strict=True):
+            self.play(GrowArrow(arrow), run_time=0.4)
+            self.play(FadeIn(card), run_time=0.5)
         footer = label("Change an input. Render the result.", 29).move_to([0, -2.05, 0])
         self.play(FadeIn(footer), run_time=0.5)
         self.wait(1.5)
