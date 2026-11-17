@@ -6,10 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "animoz"
 version = "0.1.0"
 description = "A personal collection of mathematical, graphical, and experimental animations."
-requires-python = ">=3.11"
+requires-python = ">=3.11.5"
 
 [project.optional-dependencies]
-manim = ["manim==0.22.1"]
+manim = ["manim==0.22.1", "packaging>=25"]
 notebooks = ["jupyter", "numpy", "matplotlib", "vpython"]
 
 [project.scripts]
@@ -19,4 +19,9 @@ animoz = "animoz.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
+"animoz" = ["runtime.toml"]
 "animoz.projects.intro" = ["*.toml"]
+
+[tool.uv]
+# Patched floor for the optional notebook dependency (GHSA-mmhr-3c5m-f64f).
+constraint-dependencies = ["soupsieve>=4.0.0"]

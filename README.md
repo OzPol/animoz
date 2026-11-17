@@ -3,8 +3,8 @@ A personal collection of mathematical, graphical, and experimental animations.
 
 ## Manim Community
 
-Python **3.12** is the default development environment; Python **3.11** is also
-supported and checked in CI. The Manim examples use **CMU Serif** on a light canvas
+Python **3.12** is the default development environment; Python **3.11.5+** is also
+supported, with the latest 3.11 patch checked in CI. The Manim examples use **CMU Serif** on a light canvas
 with dark text. [See uppercase, title case, lowercase, bold, and italic samples](docs/images/cmu-serif.png).
 
 Open this branch in GitHub Codespaces, or use VS Code's **Reopen in Container**.
@@ -39,12 +39,14 @@ activate the installed environment or prefix them with `uv run --locked --extra 
 - [Understand and modify the intro project](docs/intro.md)
 - [Add another project without duplicating the shared code](docs/architecture.md)
 - [CI, saved videos, and branch workflow](docs/development.md)
+- [Dependency auditing and execution boundaries](docs/security.md)
 
 ### Project structure
 
 | Location | Responsibility |
 | --- | --- |
 | `src/animoz/core/` | Units and numerical models; no Manim dependency |
+| `src/animoz/runtime.toml` | Shared font and native environment prerequisites |
 | `src/animoz/rendering/` | Shared clock and presentation helpers |
 | `src/animoz/projects/intro/` | Intro settings, model adapter, and three scenes |
 | `src/animoz/registry.py` | Register each project's scene aliases |
@@ -56,7 +58,7 @@ The first PR introduces this foundation and the intro examples. Puerta Court and
 the systolic-array project follow in separate branches and PRs.
 
 ## Notebook requirements
-- Python 3.11+
+- Python 3.11.5+
 - numpy
 - matplotlib
 - FFmpeg executable on `PATH` for GIF export

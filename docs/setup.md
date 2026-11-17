@@ -2,8 +2,8 @@
 
 ## GitHub Codespaces
 
-1. On GitHub, select the branch you want to use. While the intro PR is open,
-   select `manim-intro`.
+1. On GitHub, select `main` for merged work, or the working branch of the PR
+   you want to try.
 2. Select **Code > Codespaces > Create codespace on this branch**.
 3. Wait for the container setup to finish.
 4. Run `animoz doctor`.
@@ -17,7 +17,8 @@ The intro scenes use text and vector shapes, so they do not need LaTeX.
 Start with a 2-core / 8 GB codespace and low-quality previews; measure the
 actual rendering time before increasing the machine size.
 
-The shared font is selected once in `src/animoz/rendering/theme.py`.
+The shared font and its system package are selected together in
+`src/animoz/runtime.toml`. Docker and CI use the same dependency installer.
 `animoz doctor` checks that **CMU Serif** is installed. For an existing Codespace
 or Dev Container, run **Dev Containers: Rebuild Container** to install the new
 system font package. [View the font sample](images/cmu-serif.png).
@@ -61,11 +62,11 @@ to your output directory's ownership if necessary.
 
 ## Native Linux environment
 
-On Debian or Ubuntu, install the native dependencies:
+On Debian 12+ or Ubuntu 24.04+, install the native dependencies (the bootstrap
+script needs Python 3.11+):
 
 ```bash
-sudo apt-get update
-sudo apt-get install -y build-essential pkg-config libcairo2-dev libpango1.0-dev ffmpeg fonts-cmu
+sudo python3 scripts/install_system_dependencies.py
 ```
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run:
@@ -77,13 +78,20 @@ uv run --locked --extra manim animoz render intro motion
 ```
 
 `.python-version` selects Python 3.12. To explicitly use an existing 3.11
-interpreter, add `--python 3.11` to `uv sync` and `uv run`.
+interpreter (3.11.5 or newer), add `--python 3.11` to `uv sync` and `uv run`.
 For Windows and macOS, the Dev Container is the common setup path. Native
 installation is also supported by [Manim's own instructions](https://docs.manim.community/en/stable/installation/uv.html).
 
 ## Existing notebooks
 
-The original notebook installation command remains available:
+For notebooks, prefer the same locked environment:
+
+```bash
+uv sync --locked --extra notebooks
+uv run --locked --extra notebooks jupyter notebook
+```
+
+The original unlocked installation command remains available:
 
 ```bash
 python -m pip install -r requirements.txt

@@ -12,10 +12,10 @@ from animoz.core.motion import LinearMotion
 
 @dataclass(frozen=True)
 class IntroSettings:
-    duration_seconds: float = 4.0
-    start_feet: float = 0.0
-    initial_speed_feet_per_second: float = 2.0
-    acceleration_feet_per_second_squared: float = 0.25
+    duration_seconds: float
+    start_feet: float
+    initial_speed_feet_per_second: float
+    acceleration_feet_per_second_squared: float
 
     def __post_init__(self) -> None:
         if not isfinite(self.duration_seconds) or self.duration_seconds <= 0:
@@ -39,14 +39,7 @@ class IntroSettings:
         )
 
 
-def load_settings(path: Path | None = None) -> IntroSettings:
-    """An explicit config path overrides the packaged teaching defaults."""
-    if path is None and os.environ.get("ANIMOZ_CONFIG"):
-        path = Path(os.environ["ANIMOZ_CONFIG"])
-    if path is None:
-        text = files(__package__).joinpath("project.toml").read_text()
-    else:
-        text = path.read_text(encoding="utf-8")
+def _motion_values(text: str) -> dict[str, float]:
     data = tomllib.loads(text)
     if set(data) != {"motion"} or not isinstance(data["motion"], dict):
         raise ValueError("The configuration must contain exactly one [motion] table.")
@@ -59,4 +52,17 @@ def load_settings(path: Path | None = None) -> IntroSettings:
         if isinstance(value, bool) or not isinstance(value, (int, float)):
             raise ValueError(f"{name} must be a number.")
         values[name] = float(value)
+    return values
+
+
+def load_settings(path: Path | None = None) -> IntroSettings:
+    """Merge a partial override into defaults defined only in project.toml."""
+    defaults = files(__package__).joinpath("project.toml").read_text(encoding="utf-8")
+    values = _motion_values(defaults)
+    if set(values) != set(IntroSettings.__dataclass_fields__):
+        raise ValueError("The packaged project.toml must define every motion setting.")
+    if path is None and os.environ.get("ANIMOZ_CONFIG"):
+        path = Path(os.environ["ANIMOZ_CONFIG"])
+    if path is not None:
+        values.update(_motion_values(path.read_text(encoding="utf-8")))
     return IntroSettings(**values)

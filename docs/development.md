@@ -10,6 +10,7 @@ Merging is a separate user decision.
 
 ```bash
 make test
+make audit
 make render
 make verify
 ```
@@ -22,9 +23,14 @@ their durations with the model timeline.
 CI runs those checks on Python 3.11 and 3.12, renders all three introductory
 scenes, and attaches the final MP4s and their render metadata to the workflow run.
 A second job builds the Docker image, checks it, and renders the welcome scene.
+The dependency job audits all locked extras, including transitive dependencies,
+against the advisory database and attaches its JSON report. A reported
+vulnerability or audit service failure fails the check. See [security](security.md).
 
-The workflow uses read-only repository permissions. It does not merge PRs or
-publish videos to an external service.
+The workflow uses read-only repository permissions and commit-pinned actions.
+Checkout does not persist Git credentials. Dependabot proposes weekly updates
+for Python dependencies, the uv bootstrap tool, actions, and the container base;
+updates still require review and passing checks.
 
 ## Where videos go
 
