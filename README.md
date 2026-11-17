@@ -6,13 +6,16 @@ A personal collection of mathematical, graphical, and experimental animations.
 - Python 3.11+
 - numpy
 - matplotlib
-- pillow
+- FFmpeg executable on `PATH` for GIF export
 - vpython
 
 Install all dependencies with:
 ```bash
     pip install -r requirements.txt
 ```
+
+Install [FFmpeg](https://ffmpeg.org/download.html) separately for your operating system.
+Check `ffmpeg -version` before running the animation export cells. GIF exports use FFmpeg.
 
 
 ## 📖 How to Run the Project
