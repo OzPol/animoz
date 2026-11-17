@@ -1,15 +1,67 @@
 # animoz
 A personal collection of mathematical, graphical, and experimental animations.
 
+## Manim Community
 
-## Requirements
+Python **3.12** is the default development environment; Python **3.11** is also
+supported and checked in CI. The Manim examples use a light canvas with dark text.
+
+Open this branch in GitHub Codespaces, or use VS Code's **Reopen in Container**.
+Once setup finishes, render your first example:
+
+```bash
+make preview
+```
+
+The terminal prints the MP4 path. Each render gets a new timestamped directory
+under `media/intro/`, with a snapshot of its settings and a `run.json` record.
+
+| Intro scene | What it demonstrates | Saved video |
+| --- | --- | --- |
+| `welcome` | Model, scene, and camera as separate layers | [Watch](videos/intro/welcome.mp4) |
+| `motion` | An equation drives position and velocity on one clock | [Watch](videos/intro/motion.mp4) |
+| `cameras` | The same motion replayed from overhead, oblique, and side views | [Watch](videos/intro/cameras.mp4) |
+
+```bash
+animoz list
+animoz doctor
+animoz render intro welcome
+animoz render intro motion
+animoz render intro cameras
+animoz render intro all --quality high
+```
+
+These commands work directly in the configured container. On a local machine,
+activate the installed environment or prefix them with `uv run --locked --extra manim`.
+
+- [Setup: Codespaces, Docker, or a local environment](docs/setup.md)
+- [Understand and modify the intro project](docs/intro.md)
+- [Add another project without duplicating the shared code](docs/architecture.md)
+- [CI, saved videos, and branch workflow](docs/development.md)
+
+### Project structure
+
+| Location | Responsibility |
+| --- | --- |
+| `src/animoz/core/` | Units and numerical models; no Manim dependency |
+| `src/animoz/rendering/` | Shared clock and presentation helpers |
+| `src/animoz/projects/intro/` | Intro settings, model adapter, and three scenes |
+| `src/animoz/registry.py` | Register each project's scene aliases |
+| `videos/intro/` | Selected finished MP4s stored with the source |
+| `media/` | Separate, automatically named working renders |
+| `notebooks/` | Existing notebook experiments and saved GIFs |
+
+The first PR introduces this foundation and the intro examples. Puerta Court and
+the systolic-array project follow in separate branches and PRs.
+
+## Notebook requirements
 - Python 3.11+
 - numpy
 - matplotlib
 - FFmpeg executable on `PATH` for GIF export
 - vpython
 
-Install all dependencies with:
+Install the notebook dependencies with:
 ```bash
     pip install -r requirements.txt
 ```

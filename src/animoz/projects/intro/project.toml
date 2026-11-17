@@ -1,0 +1,6 @@
+# These are teaching inputs, unrelated to the Puerta Court event.
+[motion]
+duration_seconds = 4.0
+start_feet = 0.0
+initial_speed_feet_per_second = 2.0
+acceleration_feet_per_second_squared = 0.25
